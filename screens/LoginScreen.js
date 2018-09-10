@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, TextInput, Alert } from 'react-native';
 
 class LoginScreen extends Component{
 
@@ -8,13 +8,25 @@ class LoginScreen extends Component{
     }
 
     render(){
+        const { navigate } = this.props.navigation
+
         return(
-            <View style={styles.container}>
-                <Button title="Go to Home Screen" 
-                    onPress={()=> this.props.navigation.navigate("Home")}>
-                </Button>
+            <View>
+                <Text 
+                    style={{fontSize: 27}}>
+                    What is your name?
+                </Text>
+                <TextInput placeholder='Name: ' />
+                <View style={{margin:7}} />
+                <Button title="Login" 
+                    onPress={()=> navigate("Home", {name: 'Waseem Koya'})}>
+                </Button>     
             </View>
         );
+    }
+
+    login(){
+        
     }
 }
 
