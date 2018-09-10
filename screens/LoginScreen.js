@@ -7,6 +7,13 @@ class LoginScreen extends Component{
         header: null
     }
 
+    constructor(){
+        super();
+        this.state = {
+            name: ''
+        }
+    }
+
     render(){
         const { navigate } = this.props.navigation
 
@@ -16,13 +23,21 @@ class LoginScreen extends Component{
                     style={{fontSize: 27}}>
                     What is your name?
                 </Text>
-                <TextInput placeholder='Name: ' />
+                <TextInput
+                    ref= {(el) => { this.username = el; }}
+                    onChangeText={(username) => this.setState({username})}
+                    value={this.state.username}
+                />
                 <View style={{margin:7}} />
                 <Button title="Login" 
-                    onPress={()=> navigate("Home", {name: 'Waseem Koya'})}>
+                    onPress={()=> navigate("Home", {name: this.state.username})}>
                 </Button>     
             </View>
         );
+    }
+
+    _handlePress(event) {
+        let username=this.state.username;
     }
 
     login(){
